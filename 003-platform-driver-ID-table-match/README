@@ -1,0 +1,13 @@
+
+- The device tree is a hardware description file.
+
+
+- struct platform_match -bind platform device to platform driver.
+
+
+- MODULE_DEVICE_TABLE macro:
+	- lets a driver expose its ID table, which describe which devices it can
+	support.
+- MODULE_ALIAS macro:
+	- add another name for the module.
+  
