@@ -5,9 +5,8 @@
 #include <linux/delay.h>
 #include <linux/kernel.h>
 
-#define I2C_BUS_AVAILABLE   (          1 )              // I2C Bus available by modify the device-tree
-#define SLAVE_DEVICE_NAME   ( "ETX_OLED" )              // Device and Driver Name
-#define SSD1306_SLAVE_ADDR  (       0x3C )              // SSD1306 OLED Slave Address
+
+#define SLAVE_DEVICE_NAME   ( "ETX_OLED" )
 
 struct ssd1306_data {
 	struct i2c_client *ssd1306_client;
@@ -115,8 +114,7 @@ static int ssd1306_oled_probe(struct i2c_client *client,
     
 	
 	if (!i2c_check_functionality(client->adapter,
-		I2C_FUNC_SMBUS_WRITE_BYTE_DATA |
-		I2C_FUNC_SMBUS_READ_BYTE_DATA))
+		I2C_FUNC_I2C))
 		return -EIO;
 	
 	ssd1306 = kzalloc(sizeof(struct ssd1306_data), GFP_KERNEL);
@@ -130,7 +128,7 @@ static int ssd1306_oled_probe(struct i2c_client *client,
 	
 	//fill the OLED with this data
 	SSD1306_DisplayInit(client);
-    SSD1306_Fill(client, 0xFF);
+    /*SSD1306_Fill(client, 0xFF);*/
 	
 	
     pr_info("OLED Probed!!!\n");
@@ -151,7 +149,7 @@ static int ssd1306_oled_remove(struct i2c_client *client)
 	pr_info("Chip found @ 0x%X (%s)\n", ssd1306->ssd1306_client->addr, ssd1306->ssd1306_client->adapter->name);
 	
 	//fill the OLED with this data
-    SSD1306_Fill(ssd1306->ssd1306_client, 0x00);
+    /*SSD1306_Fill(ssd1306->ssd1306_client, 0x00);*/
 	
     pr_info("OLED Removed!!!\n");
     return 0;
