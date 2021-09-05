@@ -1,3 +1,17 @@
+--------------- Hardware connection ---------------
+OLED		BBB
+------------------------
+VCC 	: 	3V3
+SCl 	: 	I2C1_SCL
+SDA 	: 	I2C1_SDA
+GND	:	GND
+
+- How to use:
+$ insmod i2c_omap.ko
+$ ls /dev/i2c-1
+$ insmod i2c_client.ko
+
+
 ---------------- I2C Bus Driver   -----------------
 1. Edit i2c1 node:
                          i2c1: i2c@0 {

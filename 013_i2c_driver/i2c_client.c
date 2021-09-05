@@ -128,7 +128,7 @@ static int ssd1306_oled_probe(struct i2c_client *client,
 	
 	//fill the OLED with this data
 	SSD1306_DisplayInit(client);
-    /*SSD1306_Fill(client, 0xFF);*/
+	SSD1306_Fill(client, 0xFF);
 	
 	
     pr_info("OLED Probed!!!\n");
@@ -149,7 +149,7 @@ static int ssd1306_oled_remove(struct i2c_client *client)
 	pr_info("Chip found @ 0x%X (%s)\n", ssd1306->ssd1306_client->addr, ssd1306->ssd1306_client->adapter->name);
 	
 	//fill the OLED with this data
-    /*SSD1306_Fill(ssd1306->ssd1306_client, 0x00);*/
+    SSD1306_Fill(ssd1306->ssd1306_client, 0x00);
 	
     pr_info("OLED Removed!!!\n");
     return 0;

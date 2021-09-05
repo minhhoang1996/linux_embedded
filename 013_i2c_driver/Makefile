@@ -1,4 +1,4 @@
-obj-m := i2c_client.o i2c_bus.o
+obj-m := i2c_client.o i2c_bus.o i2c-omap.o
 ARCH=arm
 CROSS_COMPILE=arm-linux-gnueabihf-
 KERNEL_DIR=/source/linux_bbb_5.4/
